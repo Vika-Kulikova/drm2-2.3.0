@@ -49,7 +49,7 @@ define([
         bindChangeEvents: function() {
             this.$filterByDate.on('change', this.submitForm.bind(this));
             this.$sortDirection.on('change', this.submitForm.bind(this));
-            this.$search.on('change', this.submitForm.bind(this));
+            // this.$search.on('change', this.submitForm.bind(this));
         },
 
         clearAllFilters: function () {
