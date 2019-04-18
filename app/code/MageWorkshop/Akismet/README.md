@@ -1,0 +1,1 @@
+MageWorkshop Akismet module allows to enable/disable spam verification via Akismet service.

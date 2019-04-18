@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright (c) MageWorkshop. All rights reserved.
+ * This source file is subject to the MageWorkshop License https://mageworkshop.com/terms-of-service
+ * Do not change this file if you want to upgrade the module to the newer versions in the future
+ * Please, contact us at https://mageworkshop.com/contact if you wish to customize this module according to you business needs
+ */
+
+/* @var $block MageWorkshop\ShoppingCartNotifications\Block\Notifications */
+?>
+<script type="text/javascript">
+    window.mageWorkshop = {};
+    window.mageWorkshop.shoppingCartNotifications = {
+        loaderEnabled: <?= /* @escapeNotVerified */ $block->getLoaderEnabled(); ?>
+    };
+</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "shoppingCartNotifications": {
+                        "component": "mageWorkshopShoppingCartNotifications",
+                        "autoHideDelay": <?= /* @escapeNotVerified */ $block->getAutoHideDelay(); ?>,
+                        "disableDefaultNotification": <?= /* @escapeNotVerified */ $block->getDefaultNotificationIsDisabled(); ?>,
+                        "notificationsEnabled": <?= /* @escapeNotVerified */ $block->getNotificationsEnabled(); ?>
+                    }
+                }
+            },
+            "mageWorkshopShoppingCartNotificationsStyles": {}
+        }
+    }
+</script>

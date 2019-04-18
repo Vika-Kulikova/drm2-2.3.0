@@ -1,0 +1,4 @@
+We have improved the process of adding products to the Shopping Cart in the Magento 2 platform.
+Right now it is not really clear if the product is added successfully or not - messages are shown at the top of the page and are not visible to the customer.
+So, we have created the "Shopping Cart Notifications" extension for Magento 2 based on-line stores. It adds a tooltip at the right upper corner that clearly notifies the customer about the result of their actions.
+Additionally, you can turn on the overlay with the animated loader so that customers see that the process still works and does not take other actions at that moment.

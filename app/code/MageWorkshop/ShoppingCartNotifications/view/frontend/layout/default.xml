@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) MageWorkshop. All rights reserved.
+  ~ This source file is subject to the MageWorkshop License https://mageworkshop.com/terms-of-service
+  ~ Do not change this file if you want to upgrade the module to the newer versions in the future
+  ~ Please, contact us at https://mageworkshop.com/contact if you wish to customize this module according to you business needs
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="MageWorkshop\ShoppingCartNotifications\Block\Notifications"
+                   name="mageworkshop_shoppingcartnotifications"
+                   ifconfig="mageworkshop_shoppingcartnotifications/general/enabled"
+                   template="MageWorkshop_ShoppingCartNotifications::shopping_cart_notifications.phtml"
+            />
+        </referenceContainer>
+<!-- referenceBlock name="message" was used to hide default magento notifications especially for Edge browser -->
+        <referenceBlock name="messages">
+            <action method="setTemplate" ifconfig="mageworkshop_shoppingcartnotifications/general/default_notifications_disabled">
+                <argument name="template" xsi:type="string">MageWorkshop_ShoppingCartNotifications::empty.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>
