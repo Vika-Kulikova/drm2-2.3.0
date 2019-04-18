@@ -17,6 +17,7 @@ use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class VerifiedHelper extends RulesHelper
 {
@@ -100,7 +101,7 @@ class VerifiedHelper extends RulesHelper
      */
     public function allowToPostReviewForCurrentUser($productId)
     {
-        if (!$this->scopeConfig->getValue(self::XML_PATH_MAGEWORKSHOP_CUSTOMER_PERMISSIONS_GENERAL_VERIFIED_BUYERS)) {
+        if (!$this->scopeConfig->getValue(self::XML_PATH_MAGEWORKSHOP_CUSTOMER_PERMISSIONS_GENERAL_VERIFIED_BUYERS, ScopeInterface::SCOPE_STORE)) {
             return true;
         } else {
             return ($this->getCustomerEmail() && $this->getOrderedProductsByCustomerEmail($this->getCustomerEmail(), $productId));
@@ -113,7 +114,7 @@ class VerifiedHelper extends RulesHelper
      */
     public function showVerifiedBuyersIcon($productId)
     {
-        if (!$this->scopeConfig->getValue(self::XML_PATH_MAGEWORKSHOP_CUSTOMER_PERMISSIONS_GENERAL_VERIFIED_BUYERS_ICON)) {
+        if (!$this->scopeConfig->getValue(self::XML_PATH_MAGEWORKSHOP_CUSTOMER_PERMISSIONS_GENERAL_VERIFIED_BUYERS_ICON, ScopeInterface::SCOPE_STORE)) {
             return true;
         } else {
             return ($this->getCustomerEmail() && $this->getOrderedProductsByCustomerEmail($this->getCustomerEmail(), $productId));
@@ -126,7 +127,7 @@ class VerifiedHelper extends RulesHelper
     public function getAllowedGroups()
     {
         $result = [];
-        $allowedGroups = $this->scopeConfig->getValue(self::XML_PATH_MAGEWORKSHOP_CUSTOMER_PERMISSIONS_GENERAL_GROUPS);
+        $allowedGroups = $this->scopeConfig->getValue(self::XML_PATH_MAGEWORKSHOP_CUSTOMER_PERMISSIONS_GENERAL_GROUPS, ScopeInterface::SCOPE_STORE);
 
         if (isset($allowedGroups)) {
             $result = explode(',', $allowedGroups);

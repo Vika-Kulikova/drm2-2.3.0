@@ -15,6 +15,7 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Session\SessionManager;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class RulesHelper extends AbstractHelper
 {
@@ -116,11 +117,11 @@ class RulesHelper extends AbstractHelper
      */
     public function isModuleEnabled()
     {
-        return $this->scopeConfig->getValue(self::XML_PATH_MAGEWORKSHOP_CUSTOMER_PERMISSIONS_GENERAL_ENABLED);
+        return $this->scopeConfig->getValue(self::XML_PATH_MAGEWORKSHOP_CUSTOMER_PERMISSIONS_GENERAL_ENABLED, ScopeInterface::SCOPE_STORE);
     }
 
     public function isAutoApproveEnabled()
     {
-        return ($this->isModuleEnabled() && $this->scopeConfig->getValue(self::XML_PATH_MAGEWORKSHOP_CUSTOMER_PERMISSIONS_GENERAL_ENABLED_AUTO_APPROVE));
+        return ($this->isModuleEnabled() && $this->scopeConfig->getValue(self::XML_PATH_MAGEWORKSHOP_CUSTOMER_PERMISSIONS_GENERAL_ENABLED_AUTO_APPROVE, ScopeInterface::SCOPE_STORE));
     }
 }
